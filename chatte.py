@@ -192,36 +192,6 @@ def main():
             else:
                 st.error("❌ Введите имя перед отправкой сообщения")
 
-        # Быстрые действия
-        st.markdown("---")
-        st.subheader("🚀 Быстрые действия")
-
-        if st.button("👍 Поздороваться") and st.session_state.user_name:
-            chat.add_message(st.session_state.user_name, f"Привет всем! Я {st.session_state.user_name}")
-            st.rerun()
-
-        if st.button("❓ Задать вопрос") and st.session_state.user_name:
-            chat.add_message(st.session_state.user_name, "Есть вопросы? Пишите!")
-            st.rerun()
-
-        # Шаблоны сообщений
-        st.markdown("---")
-        st.subheader("📋 Шаблоны")
-        templates = {
-            "Приветствие": "Здравствуйте!",
-            "Вопрос": "Как у вас дела?",
-            "Прощание": "До свидания!",
-            "Благодарность": "Спасибо за помощь!"
-        }
-
-        for template_name, template_text in templates.items():
-            if st.button(template_name):
-                st.session_state.template = template_text
-                st.rerun()
-
-        if 'template' in st.session_state:
-            st.text_area("Выбранный шаблон:", st.session_state.template, height=100)
-
 
 if __name__ == "__main__":
     main()
